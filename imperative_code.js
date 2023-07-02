@@ -17,11 +17,12 @@ Window.prototype.tabOpen = function(tab) {
 
 // When you close a tab
 Window.prototype.tabClose = function(index) {
+
   // Only change code below this line
-  this.tabs.splice(index, 1); // Remove the tab at the given index
-  // Only change code above this line
+
+  this.tabs.splice(index, 1);
   return this;
-};
+ };
 
 // Let's create three browser windows
 const workWindow = new Window(['GMail', 'Inbox', 'Work mail', 'Docs', 'freeCodeCamp']); // Your mailbox, drive, and other work sites
@@ -31,8 +32,6 @@ const videoWindow = new Window(['Netflix', 'YouTube', 'Vimeo', 'Vine']); // Ente
 // Now perform the tab opening, closing, and other operations
 const finalTabs = socialWindow
   .tabOpen() // Open a new tab for cat memes
-  .join(socialWindow.tabClose(1)) // Close third tab in video window, and join
-  .join(videoWindow.tabClose(1))
-  .join(workWindow.tabClose(1));
-
+  .join(videoWindow.tabClose(2)) // Close third tab in video window, and join
+  .join(workWindow.tabClose(1).tabOpen());
 console.log(finalTabs.tabs);
